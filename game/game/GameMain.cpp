@@ -7,12 +7,14 @@
 #include "Enemy.h"
 #include "EnemyType1.h"
 #include "EnemyType2.h"
+#include "time.h"
 
 GameMain::GameMain(HWND hWnd)
 {
 
 	m_pBackground = new Background(hWnd);
 	m_pPlayerCharacter = new PlayerCharacter();
+	m_time = new myTime();
 }
 
 
@@ -41,7 +43,7 @@ bool GameMain::CreateGame(HWND hWnd)
 
 	}
 	
-
+	m_time->Init();
 
 	return true;
 }
@@ -49,17 +51,18 @@ bool GameMain::CreateGame(HWND hWnd)
 
 bool GameMain::RunningGame(HWND hWnd)
 {
-
-
+	
+	Time_Process();
+	
 	KeyInput(hWnd);
 
-	background_process(hWnd);
+	Background_process(hWnd);
 
-	character_process(hWnd);
+	Character_process(hWnd);
 	
-	projectile_process(hWnd);
+	Projectile_process(hWnd);
 
-	enemy_process(hWnd);
+	Enemy_process(hWnd);
 
 
 	BitBlt(m_hdc, 0, 0, 1280, 1024, m_memoryDC, 0, 0, SRCCOPY);
@@ -81,33 +84,46 @@ bool GameMain::ExitGame(HWND hWnd)
 	return 0;
 }
 
-bool GameMain::background_process(HWND hWnd)
+bool GameMain::Background_process(HWND hWnd)
 {
 	m_pBackground->RunningBackground(hWnd, m_hdc, m_imageDC, m_memoryDC, m_memoryBItmap);
 	return true;
 }
 
-bool GameMain::character_process(HWND hWnd)
+bool GameMain::Character_process(HWND hWnd)
 {
 	m_pPlayerCharacter->RunningCharacter(hWnd, m_hdc, m_memoryDC);
 	return true;
 }
 
-bool GameMain::projectile_process(HWND hWnd)
+bool GameMain::Projectile_process(HWND hWnd)
 {
 
 
 	return true;
 }
 
-bool GameMain::enemy_process(HWND hWnd)
+bool GameMain::Enemy_process(HWND hWnd)
 {
-	for(int i=0;i< enemyVector.size();i++)
-	{
-		Enemy* enemy1 = enemyVector[i];
-		enemy1->DrawEnemy(hWnd, m_memoryDC);
-		enemy1->MoveToLine(1280, 600);
+	if(m_totalTime >= 3)
+	{ 
+		for(int i=0;i < (int)enemyVector.size();i++)
+		{
+			Enemy* enemy1 = enemyVector[i];
+			enemy1->DrawEnemy(hWnd, m_memoryDC);
+			enemy1->MoveToLine(1280, 600);
+		}
 	}
+	return true;
+}
+
+bool GameMain::Time_Process()
+{
+	m_time->ProcessTime();
+
+	m_elapsedTime = m_time->GetElapsedTime();
+	m_totalTime += m_elapsedTime;
+
 	return true;
 }
 

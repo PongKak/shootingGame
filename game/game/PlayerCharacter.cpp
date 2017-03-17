@@ -62,6 +62,7 @@ void PlayerCharacter::SetCharacterDirection(int direction)
 }
 
 
+
 bool PlayerCharacter::RunningCharacter(HWND hWnd, HDC hdc, HDC memoryDC)
 {
 	DrawPropella(hWnd, hdc, memoryDC);
