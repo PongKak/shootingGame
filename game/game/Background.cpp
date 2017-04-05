@@ -29,8 +29,6 @@ bool Background::DrawBackground(HWND hWnd,HDC hdc, HDC imageDC, HDC memoryDC,HBI
 	
 	BitBlt(memoryDC, 0, 0, 1280, 1024, imageDC, 0, 0, SRCCOPY);
 	
-	//SelectObject(hdc, oldBitmap);
-
 	return true;
 }
 
@@ -48,4 +46,16 @@ bool Background::RunningBackground(HWND hWnd, HDC hdc, HDC imageDC,  HDC memoryD
 	DrawBackground(hWnd, hdc, imageDC, memoryDC, memoryBitmap);
 	return true;
 }
+
+
+void Background::SetMemoryDC(HDC memoryDC)
+{
+	m_memoryDC = memoryDC;
+}
+
+void Background::SetHWnd(HWND hWnd)
+{
+	this->hWnd = hWnd;
+}
+
 

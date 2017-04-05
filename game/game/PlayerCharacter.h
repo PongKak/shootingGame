@@ -11,11 +11,15 @@ public:
 	
 	inline void SetElapsedTime(float deltaTime) { m_elapsedTime = deltaTime; }
 	inline void SetTotalTime(float totalTime) { m_totalTime = totalTime; }
-
-	bool RunningCharacter(HWND hWnd, HDC hdc, HDC memoryDC);
-	bool DrawPropella(HWND hWnd, HDC hdc, HDC memoryDC);
-	bool DrawCharacter(HWND hWnd, HDC hdc, HDC memoryDC);
 	
+
+	bool RunningCharacter();
+	bool DrawPropella();
+	bool DrawCharacter();
+
+
+	void SetMemoryDC(HDC);
+	void SetHWnd(HWND);
 
 
 	bool controllable = false;
@@ -27,17 +31,24 @@ public:
 
 	int m_characterDirection = 0;
 
-	CImage m_charactermasking;
-	CImage m_PlayerCharacterImage;
-	CImage m_maskingProp;
-	CImage m_propImage;
+	int type = 0;
+
+
+	CImage m_charactermasking[3];
+	CImage m_PlayerCharacterImage[3];
+	CImage m_maskingProp[6];
+	CImage m_propImage[6];
 
 	WCHAR path[256];
-	WCHAR characterImagePath[256];
-	WCHAR characterMaskingPath[256];
+
+
+	std::vector<WCHAR*> m_imagePathVector;
+	std::vector<WCHAR*> m_maskPathVector;
 
 	WCHAR propellaMaskingPath[256];
 	WCHAR propellaPath[256];
-	
+
+	HDC m_memoryDC;
+	HWND hWnd;
 };
 

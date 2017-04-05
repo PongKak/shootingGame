@@ -9,7 +9,7 @@ public:
 	~EnemyType1();
 
 
-	void DrawEnemy(HWND,HDC);
-	void SetEnemyStatus();
+	virtual void Moving();
+
 };
 

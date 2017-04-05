@@ -4,11 +4,14 @@
 class EnemyType2 :	public Enemy
 {
 public:
-	EnemyType2();
+	EnemyType2(float x, float y);
 	~EnemyType2();
 
 
-	void DrawEnemy(HWND,HDC);
+	float xDirection;
+
+	virtual void Moving();
+
 	void SetEnemyStatus();
 };
 

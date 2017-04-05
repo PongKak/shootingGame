@@ -146,6 +146,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="EnemyBoss.cpp" />
+    <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="EnemyType2.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyType1.cpp" />
@@ -153,17 +156,24 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PlayerCharacter.cpp" />
     <ClCompile Include="projectile.cpp" />
+    <ClCompile Include="ProjectileManager.cpp" />
+    <ClCompile Include="ProjectileTypeLaser.cpp" />
     <ClCompile Include="time.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Background.h" />
+    <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="define.h" />
+    <ClInclude Include="EnemyBoss.h" />
+    <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="EnemyType2.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyType1.h" />
     <ClInclude Include="GameMain.h" />
     <ClInclude Include="PlayerCharacter.h" />
     <ClInclude Include="projectile.h" />
+    <ClInclude Include="ProjectileManager.h" />
+    <ClInclude Include="ProjectileTypeLaser.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="time.h" />

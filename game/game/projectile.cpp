@@ -1,12 +1,24 @@
 #include "stdafx.h"
+#include "define.h"
 #include "projectile.h"
 
 
-projectile::projectile()
+Projectile::Projectile()
 {
+	GetCurrentDirectory(sizeof(path), path);
 }
 
 
-projectile::~projectile()
+Projectile::~Projectile()
 {
 }
+
+void Projectile::DrawProjectile(HDC)
+{
+}
+
+void Projectile::MoveToLine()
+{
+	m_PositionY += LASERSPEED;
+}
+
